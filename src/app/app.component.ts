@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-elements';
+  react = () => {
+    console.log("i am reacting to the button click");
+  }
 }
