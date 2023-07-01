@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng e2e",
-    "start-elements": "ng build --prod --project='elements'",
+    "start-elements": "ng serve --project='elements'",
     "build-elements": "ng build --prod --project='elements' --output-hashing none && node build-component.js"
   },
   "private": true,

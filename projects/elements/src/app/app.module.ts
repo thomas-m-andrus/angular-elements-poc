@@ -1,8 +1,6 @@
-import { NgModule } from '@angular/core';
+import { DoBootstrap, NgModule, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AwesomeComponentComponent } from '../../../../src/app/awesome-component/awesome-component.component';
-
-import { Injector } from '@angular/core';
+import { AwesomeComponentComponent } from '@app/app/awesome-component/awesome-component.component';
 import { createCustomElement } from '@angular/elements';
 
 @NgModule({
@@ -12,7 +10,7 @@ import { createCustomElement } from '@angular/elements';
   bootstrap: [AwesomeComponentComponent],
   exports: [AwesomeComponentComponent],
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
   constructor(private injector: Injector) {
     const el = createCustomElement(AwesomeComponentComponent, { injector });
     customElements.define('awesome-component', el);
