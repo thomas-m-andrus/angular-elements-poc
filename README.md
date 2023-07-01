@@ -64,12 +64,12 @@ Once I generate the element I have been using the following *index.html* file to
 # Current Predicament
 So everything works okay thus far! This is what the component looks like:
 
-![basic look of component](./angular-elements/src/assets/general-look-of-component.png)
+![basic look of component](src/assets/general-look-of-component.png)
 
 It's not very exciting but it serves its purpose. It has a ***name*** input, a *click* event emitter, and it uses a child component.
 
 ***PROBLEM!*** However, when using the element in the index.html I am getting the following error:
 
-![error](./angular-elements/src/assets/error.png)
+![error](src/assets/error.png)
 
 I think it is coming from the index file in the projects/elements/src/index.html, but I'm not really sure how that file fits into Angular elements.
