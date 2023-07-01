@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AwesomeComponentComponent } from './awesome-component/awesome-component.component';
+import { Injector } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,13 @@ import { AwesomeComponentComponent } from './awesome-component/awesome-component
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, AwesomeComponentComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor(private injector: Injector) {
+    const el = createCustomElement(AwesomeComponentComponent, { injector });
+    customElements.define('awesome-component', el);
+  }
+  ngDoBootstrap() {}
+}
