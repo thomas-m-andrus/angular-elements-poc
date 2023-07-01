@@ -8,7 +8,7 @@ import { createCustomElement } from '@angular/elements';
   declarations: [AwesomeComponentComponent, ChildAwesomeComponentComponent],
   imports: [BrowserModule],
   providers: [],
-  bootstrap: [AwesomeComponentComponent],
+  entryComponents: [AwesomeComponentComponent],
   exports: [AwesomeComponentComponent, ChildAwesomeComponentComponent],
 })
 export class AppModule implements DoBootstrap {
