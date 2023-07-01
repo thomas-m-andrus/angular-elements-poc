@@ -2,26 +2,74 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
 
-## Development server
+# Purpose
+I am trying to understand Angular Elements because I have two existing apps, one is an angular 11 app with a component I want to re-use in an angularjs app. So I have set up a base project that then has a separate project for exporting an angular element similar to what I wish to accomplish with the existing I will apply this knowledge to.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# References
+[tutorial used to build this project](https://micklawitzke.medium.com/build-web-components-out-of-an-existing-angular-app-with-angular-elements-7dacf84b2fb3)
 
-## Code scaffolding
+# Development
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+npm run start
+```
+This will run the base app.
 
-## Build
+```
+npm run start-elements
+```
+This will run a preview of the Element
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Build
 
-## Running unit tests
+```
+npm run build-elements
+```
+This will generate an Angular Element in the dist folder and then it will compress all the relevent files together in the ***native-elements*** folder that gets generated. You can then take the ***awesome-component.js*** and include it on any file.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Using the Element
+Once I generate the element I have been using the following *index.html* file to use the element:
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Testing the News Web Component</title>
+    <base href="/" />
+  </head>
+  <body>
+    <div>mellony</div>
 
-## Running end-to-end tests
+      <awesome-component id="my-awesome-component" name="Sally"></awesome-component>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+      <script type="text/javascript" src="awesome-componet.js"></script>
+      <script>
+        const button = document.getElementById("my-awesome-component");
 
-## Further help
+        // Step 2: Define the event listener function
+        function handleClick() {
+          console.log("changing to danial");
+          button.setAttribute('name', 'danial')
+          // Additional actions or logic can be performed here
+        }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+        // Step 3: Add the event listener
+        button.addEventListener("click", handleClick);
+      </script>
+  </body>
+</html>
+```
+# Current Predicament
+So everything works okay thus far! This is what the component looks like:
+
+![basic look of component](/angular-elements/src/assets/general-look-of-component.png)
+
+It's not very exciting but it serves its purpose. It has a ***name*** input, a *click* event emitter, and it uses a child component.
+
+***PROBLEM!*** However, when using the element in the index.html I am getting the following error:
+
+![error](/angular-elements/src/assets/error.png)
+
+I think it is coming from the index file in the projects/elements/src/index.html, but I'm not really sure how that file fits into Angular elements.
